@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
+
 
 public class VPF1 {
     private int Vec[];
@@ -153,6 +153,7 @@ public class VPF1 {
             exp--;
         }
         System.out.println(s);
+        Basura.close();
     }
 
     public int[] CrearVectori(String[] Vs) {
@@ -177,6 +178,7 @@ public class VPF1 {
         Scanner Basura = new Scanner(System.in);
         System.out.println("Ingresa el monomio a insertar: ");
         String cadena = Basura.nextLine();
+        Basura.close();
         String[] Vs = CrearVectorString(cadena);
         int[] Vi = CrearVectori(Vs);
 
@@ -207,6 +209,7 @@ public class VPF1 {
         Scanner Basura = new Scanner(System.in);
         System.out.println("Ingresa el monomio a eliminar: ");
         String cadena = Basura.nextLine();
+        Basura.close();
         VPF1 Vi = new VPF1(cadena);
         Boolean bandera = true;
         if (Vec[0] >= Vi.Vec[0]) {
@@ -230,6 +233,7 @@ public class VPF1 {
         Scanner Basura = new Scanner(System.in);
         System.out.println("Ingresa el polinomio a sumar: ");
         String cadena = Basura.nextLine();
+        Basura.close();
         VPF1 Vi = new VPF1(cadena);
 
         int i = 1, j = 1, expA = Vec[0], expB = Vi.Vec[0];
@@ -269,6 +273,7 @@ public class VPF1 {
         Scanner Basura = new Scanner(System.in);
         System.out.println("Ingresa el polinomio a sumar: ");
         String cadena = Basura.nextLine();
+        Basura.close();
         VPF1 Vi = new VPF1(cadena);
         int[] A, B;
         if (Du > Vi.Du) {

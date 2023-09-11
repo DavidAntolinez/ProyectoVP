@@ -333,4 +333,35 @@ public class VPF1 {
         }
         System.out.println(cadena);
     }
+
+    public void Reconstruir(){
+        String cadena = "";
+        for (int i = 1; i < Vec.length; i++) {
+            int grado = Du - i;
+            if(Vec[i] != 0){
+                if(Vec[i] != 1 && Vec[i] != -1){
+                    cadena += Vec[i];
+                }else if(Vec[i] == -1){
+                    if(i == Vec.length-1){
+                        cadena += Vec[i];    
+                    }else{
+                        cadena += "-";
+                    }
+                }else if(Vec[i] == 1){
+                    if(i == Vec.length-1){
+                        cadena += "+"+Vec[i];    
+                    }
+                }
+                if(grado == 1){
+                    cadena += "x";
+                }else if(grado > 1){
+                    cadena += "x^"+grado;
+                }
+                if(i+1 < Vec.length && Vec[i+1] > 0){
+                    cadena += "+";
+                }
+            }
+        }
+        System.out.println(cadena);
+    }
 }

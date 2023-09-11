@@ -2,7 +2,7 @@
 
 public class App {
     public static void main(String[] args) throws Exception {
-        VPF2 Prueba = new VPF2("9x^6-23x^5+2x^4-23x^3-x");
+        VPF1 Prueba = new VPF1("9x^6-23x^5+x^4-x^3+1");
         Prueba.MostrarConsola();
         
         //int[] V = {4,3,5,0,4,2,1,10,0};
@@ -13,11 +13,11 @@ public class App {
         //Prueba.MostrarConsola();
         //Prueba.Eliminar();
         //Prueba.MostrarConsola();
-        Prueba.Insertar();
+        //Prueba.Insertar();
         //Prueba.Suma_PolinomiosVPF1();
         //Prueba.Multiplicar_PolinomiosVPF1();
         // Prueba.ReconstruirVPF1();
-        
+        Prueba.Reconstruir();
     }
 
     

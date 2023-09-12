@@ -240,4 +240,34 @@ public class VPF2 {
         }
         MostrarConsola();
     }
+
+    public void Reconstruir(){
+        String cadena = "";
+        for (int i = 1; i < Vec.length; i+=2) {
+            
+                if(Vec[i] != 1 && Vec[i] != -1){
+                    cadena += Vec[i];
+                }else if(Vec[i] == -1){
+                    if(i == Vec.length-2){
+                        cadena += Vec[i];    
+                    }else{
+                        cadena += "-";
+                    }
+                }else if(Vec[i] == 1){
+                    if(i == Vec.length-2){
+                        cadena += Vec[i];    
+                    }
+                }
+                if(Vec[i+1] == 1){
+                    cadena += "x";
+                }else if(Vec[i+1] > 1){
+                    cadena += "x^"+Vec[i+1];
+                }
+                if(i+2 < Vec.length && Vec[i+2] > 0){
+                    cadena += "+";
+                }
+            
+        }
+        System.out.println(cadena);
+    }
 }

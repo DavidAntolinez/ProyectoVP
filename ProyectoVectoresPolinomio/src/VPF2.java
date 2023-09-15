@@ -149,7 +149,7 @@ public class VPF2 {
         Scanner Basura = new Scanner(System.in);
         System.out.println("Ingresa el polinomio a sumar: ");
         String cadena = Basura.nextLine();
-        Basura.close();
+        
         VPF2 B = new VPF2(cadena);
         VPF2 C = new VPF2();
         C.Vec = new int[((Vec[0] + B.Vec[0]) * 2) + 1];
@@ -184,7 +184,7 @@ public class VPF2 {
         Scanner Basura = new Scanner(System.in);
         System.out.println("Ingresa el monomio a insertar: ");
         String cadena = Basura.nextLine();
-        Basura.close();
+        
         VPF2 B = new VPF2(cadena);
         if (B.Vec[2] > Vec[2]) {
             int[] nuevo = new int[(Vec[0] + 1) * 2 + 1];

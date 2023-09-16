@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class VPF2 {
     private int Vec[], Du;
-
+    Scanner Basura = new Scanner(System.in);
     public VPF2(String cadena) {// no terminado
         Vec = CrearVectori(CrearVectorString(cadena));
         Du = Vec[0] * 2;
@@ -85,6 +85,9 @@ public class VPF2 {
     public int[] CrearVectori(String Vs[]) {// no terminado
         int Mayor = 0, cont = 0;
         int pos = 0;
+
+            
+        
         for (int i = 1; i < Vs.length && !(Vs[i] == null); i += 2) {
             if (Mayor < Integer.parseInt(Vs[i])) {
                 Mayor = Integer.parseInt(Vs[i]);
@@ -92,6 +95,7 @@ public class VPF2 {
             }
             cont++;
         }
+
         int[] Vi = new int[(cont) * 2 + 1];
         Vi[0] = cont;
         Boolean bandera = true;
@@ -117,6 +121,7 @@ public class VPF2 {
         }
         return Vi;
     }
+    
 
     public void MostrarConsola() {
         for (int i = 0; i < Vec.length; i++) {
@@ -145,8 +150,43 @@ public class VPF2 {
         }
     }
 
+    public void Evaluar() {
+        System.out.println("Ingrese el valor a evaluar:");
+        int j=2;
+        int x = Basura.nextInt();
+        int s = 0;
+        for (int i = 1; i < Vec.length; i+=2) {
+            s+= (Vec[i] * ((Math.pow(x, Vec[j]))));
+            j+=2;
+        }
+
+        System.out.println(s);
+    }
+
+    public void Eliminar() {
+        System.out.println("Ingresa el monomio a eliminar: ");
+        String monomio = Basura.nextLine();
+        VPF2 Vi = new VPF2(monomio);
+        Boolean bandera = false;
+        
+        for(int i=2; i < Vec.length; i+=2){
+            if(Vi.Vec[2]==Vec[i]){
+                Vec[i]=0;
+                Vec[i-1]=0;
+                bandera=true;
+            }
+        }
+        Redimensionar();
+        MostrarConsola();
+
+        if(bandera==false){
+            System.out.println("El monomio ingresado no existe");
+        }
+    }
+
+
+
     public void Sumar() {
-        Scanner Basura = new Scanner(System.in);
         System.out.println("Ingresa el polinomio a sumar: ");
         String cadena = Basura.nextLine();
         
@@ -155,18 +195,30 @@ public class VPF2 {
         C.Vec = new int[((Vec[0] + B.Vec[0]) * 2) + 1];
         int i = 2, j = 2, k = 1;
         while (i <= Du || j <= B.Du) {
-            if ((i <= Du && j <= B.Du) && (Vec[i] == B.Vec[j])) {
-                C.Vec[k] = Vec[i - 1] + B.Vec[j - 1];
+            if ((i <= Du && j <= B.Du)) {
+                if((Vec[i] == B.Vec[j])){
+                    C.Vec[k] = Vec[i - 1] + B.Vec[j - 1];
                 C.Vec[k + 1] = Vec[i];
                 k += 2;
                 i += 2;
                 j += 2;
-            } else if ((j > B.Du) || (Vec[i] > B.Vec[j])) {
+                }else if((Vec[i] > B.Vec[j])){
+                    C.Vec[k] = Vec[i - 1];
+                C.Vec[k + 1] = Vec[i];
+                k += 2;
+                i += 2;
+                }else if((B.Vec[j] > Vec[i])){
+                    C.Vec[k] = B.Vec[j - 1];
+                C.Vec[k + 1] = B.Vec[j];
+                k += 2;
+                j += 2;
+                }
+            } else if ((j > B.Du)) {
                 C.Vec[k] = Vec[i - 1];
                 C.Vec[k + 1] = Vec[i];
                 k += 2;
                 i += 2;
-            } else if ((i > Du) || (B.Vec[j] > Vec[i])) {
+            } else if ((i > Du)) {
                 C.Vec[k] = B.Vec[j - 1];
                 C.Vec[k + 1] = B.Vec[j];
                 k += 2;
@@ -181,10 +233,8 @@ public class VPF2 {
     }
 
     public void Insertar() {
-        Scanner Basura = new Scanner(System.in);
         System.out.println("Ingresa el monomio a insertar: ");
         String cadena = Basura.nextLine();
-        
         VPF2 B = new VPF2(cadena);
         if (B.Vec[2] > Vec[2]) {
             int[] nuevo = new int[(Vec[0] + 1) * 2 + 1];

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class VPF1 {
     private int Vec[];
     private int Du;
-
+    Scanner Basura = new Scanner(System.in);
     public VPF1(String Cadena) {
         Vec = CrearVectori(CrearVectorString(Cadena));
 
@@ -144,7 +144,6 @@ public class VPF1 {
 
     public void Evaluar() {
         System.out.println("Ingrese el valor a evaluar:");
-        Scanner Basura = new Scanner(System.in);
         int x = Basura.nextInt();
         int s = 0;
         int exp = Du - 1;
@@ -175,7 +174,6 @@ public class VPF1 {
     }
 
     public void Insertar_Monomio() {
-        Scanner Basura = new Scanner(System.in);
         System.out.println("Ingresa el monomio a insertar: ");
         String cadena = Basura.nextLine();
         
@@ -206,7 +204,7 @@ public class VPF1 {
     }
 
     public void Eliminar() {
-        Scanner Basura = new Scanner(System.in);
+
         System.out.println("Ingresa el monomio a eliminar: ");
         String cadena = Basura.nextLine();
         
@@ -230,7 +228,6 @@ public class VPF1 {
     }
 
     public void Suma_PolinomiosVPF1() {
-        Scanner Basura = new Scanner(System.in);
         System.out.println("Ingresa el polinomio a sumar: ");
         String cadena = Basura.nextLine();
         
@@ -270,10 +267,8 @@ public class VPF1 {
     }
 
     public void Multiplicar_PolinomiosVPF1() {
-        Scanner Basura = new Scanner(System.in);
-        System.out.println("Ingresa el polinomio a sumar: ");
+        System.out.println("Ingresa el polinomio a multimplicar: ");
         String cadena = Basura.nextLine();
-        
         VPF1 Vi = new VPF1(cadena);
         int[] A, B;
         if (Du > Vi.Du) {

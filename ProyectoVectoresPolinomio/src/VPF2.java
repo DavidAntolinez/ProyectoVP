@@ -84,7 +84,7 @@ public class VPF2 {
 
     public int[] CrearVectori(String Vs[]) {// no terminado
         int Mayor = 0, cont = 0;
-        int pos = 0;
+        int pos = 1;
 
             
         
@@ -160,7 +160,7 @@ public class VPF2 {
             j+=2;
         }
 
-        System.out.println(s);
+        System.out.println("El valor del Polinomio es: "+s);
     }
 
     public void Eliminar() {
@@ -231,6 +231,71 @@ public class VPF2 {
         Vec = C.Vec;
         MostrarConsola();
     }
+
+
+    public void Multiplicar() {
+        System.out.println("Ingresa el polinomio a Multiplicar: ");
+        String cadena = Basura.nextLine();
+        
+        VPF2 Vi = new VPF2(cadena);
+        int[] A, B;
+
+        if (Vec[0] > Vi.Vec[0]) {
+            A = Vec;
+            B = Vi.Vec;
+        } else {
+            A = Vi.Vec;
+            B = Vec;
+        }
+
+        int C[] = new int[(A[0] + B[0])*2 + 1];
+        C[0] = A[0] + B[0];
+        int k=1, y,z;
+        Boolean Bo=false;
+        for (int j = 1; j < B.length; j+=2) {
+                for (int i = 1; i < A.length; i+=2) {
+                    Bo=false;
+                    y=A[i+1] + B[j+1];
+                    z=A[i] * B[j];
+                    Bo=Juntar(C,y,z,Bo);
+
+                    if(!Bo){
+                        C[k]= z;
+                        C[k+1]= y;
+                        k+=2;
+                    }    
+            }
+        }
+        Vec=C;
+        Du=(Vec[0]*2) + 1;
+        Orden();
+        MostrarConsola();
+    }
+
+    public Boolean Juntar(int C[], int y, int z, boolean B){
+
+        for (int a=2; a < C.length; a+=2){
+            if(C[a]==y){
+                C[a-1]= C[a-1] + z;
+                B=true;
+            }
+        }
+        return B;
+    }
+
+    public void Orden(){
+        for(int i=2; i< Vec.length;i+=2){
+            for(int j=2; j < Vec.length-2;j+=2){
+                if(Vec[j] < Vec[j+2]){
+                    int aux;
+                    aux = Vec[j];
+                    Vec[j]= Vec[j+2];
+                    Vec[j+2]=aux;
+                }
+            }
+        }
+    }
+
 
     public void Insertar() {
         System.out.println("Ingresa el monomio a insertar: ");
